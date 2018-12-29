@@ -7,26 +7,28 @@ let _getTime = () => Unix.gettimeofday();
 
 let _recordCounter = (name: string) => {
     /* TODO */
+    ();
 }
 
 let _recordTimingMeasurement = (name: string, time: float) => {
     /* TODO */
+    ();
 }
 
 let measure = (name: string, f: measureFunction) => {
-    switch(_trackingEnabled) {
+    switch(_trackingEnabled^) {
     | false => f()
     | true => {
        let startTime = _getTime(); 
        f();
        let endTime = _getTime();
-       _recordTimingMeasurement(name, endTime - startTime);
+       _recordTimingMeasurement(name, endTime -. startTime);
     }
     }
 };
 
 let counter = (name: string) => {
-    switch(_trackingEnabled) {
+    switch(_trackingEnabled^) {
     | false => ()
     | true => _recordCounter(name);
     }
@@ -53,27 +55,35 @@ type benchmarkIterationResult = {
 let benchmark = (~opts=defaultOptions, name: string, f: measureFunction) => {
     
     let iter = () => {
-
         /* Garbage collect to clear out env */
         Gc.full_major();   
-        let { minor_words, promoted_words, major_words, minor_collections, major_collections, } = Gc.quick_stat();
-
-        let previousMinorWords = minor_words;
-        let previousPromotedWords = promoted_words;
-        let previousMajorWords = major_words;
-        let previousMinorCollections = minor_collections;
-        let previousMajorCollections = major_collections;
+        let beforeStat = Gc.quick_stat();
 
         let startTime = _getTime();
         f();
         let endTime = _getTime();
 
-        let { minor_words, promoted_words, major_words, minor_collections, major_collections, } = Gc.quick_stat();
+        let afterState = Gc.quick_stat();
+
+        ();
+        
+        /* let stats: { */
+        /*     minorWords: minor_words - previousMinorWords, */
+        /*     promotedWords: promoted_words - previousPromotedWords, */
+        /*     majorWords: major_words - previousMajorWords, */
+        /*     minorCollections: minor_collections - previousMinorCollections, */
+        /*     majorCollections: major_collections - previousMajorCollections, */
+        /* }; */
+        /* stats; */
     };
 
+    let startTime = _getTime();
     let count = ref(0);
-    while (count < opts.iterations) {
-        iter();
+    while (count^ < opts.iterations) {
+        let _ = iter();
         count := count^ + 1;
     }
+
+    let endTime = _getTime();
+    let totalTime = endTime -. startTime;
 }
