@@ -14,7 +14,7 @@
   },
   "resolutions": {
     "@opam/menhir": "20171013",
-    "@opam/re": "1.7.1"
+    "@esy-ocaml/reason": "facebook/reason#ab49908"
   },
   "devDependencies": {
     "@esy-ocaml/merlin": "*",

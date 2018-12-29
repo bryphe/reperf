@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+# OCaml / Reason
+.merlin
+*.install
+
+_esy/
+esy.lock/
