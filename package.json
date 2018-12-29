@@ -1,19 +1,34 @@
 {
   "name": "reperf",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bryphe/reperf.git"
-  },
-  "author": "",
+  "version": "1.0.1",
+  "description": "Native performance tools",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/bryphe/reperf/issues"
+  "esy": {
+    "build": "refmterr dune build -p #{self.name}",
+    "NOTE": "Optional release Section. Customizes result of `esy release`",
+    "release": {
+      "releasedBinaries": [
+        "Hello.exe"
+      ],
+      "deleteFromBinaryRelease": [
+        "*esy_ocaml_*",
+        "*refmterr-*",
+        "ocaml-*"
+      ]
+    }
   },
-  "homepage": "https://github.com/bryphe/reperf#readme"
+  "dependencies": {
+    "@opam/dune": "*",
+    "@esy-ocaml/reason": "*",
+    "refmterr": "*",
+    "ocaml": "~4.6.0"
+  },
+  "resolutions": {
+    "@opam/menhir": "20171013",
+    "@opam/re": "1.7.1"
+  },
+  "devDependencies": {
+    "@esy-ocaml/merlin": "*",
+    "ocaml": "~4.6.0"
+  }
 }
