@@ -4,18 +4,7 @@
   "description": "Native performance tools",
   "license": "MIT",
   "esy": {
-    "build": "refmterr dune build -p #{self.name}",
-    "NOTE": "Optional release Section. Customizes result of `esy release`",
-    "release": {
-      "releasedBinaries": [
-        "Hello.exe"
-      ],
-      "deleteFromBinaryRelease": [
-        "*esy_ocaml_*",
-        "*refmterr-*",
-        "ocaml-*"
-      ]
-    }
+    "build": "refmterr dune build -p #{self.name}"
   },
   "dependencies": {
     "@opam/dune": "*",
