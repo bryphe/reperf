@@ -1,8 +1,6 @@
 # reperf
 
-## Native Reason + JSOO Cross-Platform Performance Benchmarking Tools
-
----
+### Native Reason + JSOO Cross-Platform Performance Benchmarking Tools
 
 ## Why?
 
