@@ -14,5 +14,9 @@ let create = (
     ~options=Options.create(),
     (),
 ) => {
-    snapshotDir,
+    let ret:t = {
+        snapshotDir,
+        options,
+    };
+    ret;
 };

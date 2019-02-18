@@ -1,15 +1,17 @@
 
-include Instrumentation;
-
-module Args = {
-    config: Config.t,
+module type Args = {
+    let config: Config.t;
 }
 
-module Make = (UserConfig: Args) => {
+module Make = (Config: Args) => {
+
+    let _getTime = Unix.gettimeofday;
 
     type testFunction = unit => unit;
 
-    let benchmark = (~name: string, ~f: testFunction, ~options=Args.config.options, ()) => {
+    let benchmark = (~name: string, ~f: testFunction, ~options=Config.config.options, ()) => {
+
+        let opts = options;
         let iter = () => {
             /* Garbage collect to clear out env */
             Gc.full_major();   

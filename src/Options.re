@@ -1,13 +1,14 @@
 /*
  * Options.re
- *
- * Configuration for a Reperf session
  */
 
 type t = {
     iterations: int,
 };
 
-let create = (~iterations, ()) => {
-    iterations
+let create = (~iterations=100, ()) => {
+    let ret: t = { 
+        iterations: iterations,
+    };
+    ret;
 };
