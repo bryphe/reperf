@@ -8,7 +8,7 @@ A key value proposition of native [Reason](https://reasonml.github.io) is buildi
 
 However, apps and tools can often start out fast when they are simple - but decay as more features and complexity are added.
 
-`reperf` is inspired by the [core_bench](https://github.com/janestreet/core_bench) tools from Janestreet. Unfortunately, at least at time of writing, the `core_bench` OPAM package does not work on Windows.
+`reperf` is inspired by the [core_bench](https://github.com/janestreet/core_bench) tools from Janestreet. Unfortunately, at least at time of writing, the `core_bench` OPAM package does not work on Windows. (Or rather - its dependencies, like [`spawn`](https://opam.ocaml.org/packages/spawn/) do not work on Windows).
 
 ## Features
 
