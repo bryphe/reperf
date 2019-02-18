@@ -10,7 +10,8 @@
     "@opam/dune": "*",
     "@esy-ocaml/reason": "^3.4.0",
     "refmterr": "*",
-    "ocaml": ">=4.4.0"
+    "ocaml": ">=4.4.0",
+    "@reason-native/pastel": "^0.1.0"
   },
   "resolutions": {
     "@opam/menhir": "20171013"
