@@ -1,4 +1,5 @@
 module Config = Config;
+module Options = Options;
 
 module type Args = {let config: Config.t;};
 
