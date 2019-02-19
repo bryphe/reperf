@@ -41,21 +41,14 @@ module Make = (Config: Args) => {
         let result: Result.t = {
           name,
           time: endTime -. startTime,
-          minorWords: 0,
-          promotedWords: 0,
-          majorWords: 0,
+          minorWords: int_of_float(afterState.minor_words) - int_of_float(beforeState.minor_words),
+          promotedWords: int_of_float(afterState.promoted_words) - int_of_float(beforeState.promoted_words),
+          majorWords: int_of_float(afterState.major_words) - int_of_float(beforeState.major_words),
           minorCollections:
             afterState.minor_collections - beforeState.minor_collections,
-          majorCollections: 0,
+          majorCollections: afterState.major_collections - beforeState.major_collections,
         };
 
-        /* let result: Result.t = { */
-        /*     minorWords: minor_words - previousMinorWords, */
-        /*     promotedWords: promoted_words - previousPromotedWords, */
-        /*     majorWords: major_words - previousMajorWords, */
-        /*     minorCollections: minor_collections - previousMinorCollections, */
-        /*     majorCollections: major_collections - previousMajorCollections, */
-        /* }; */
         result;
       };
 

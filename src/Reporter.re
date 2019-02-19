@@ -6,6 +6,9 @@ let print = (results: list(Result.t)) => {
     "  TIME  ",
     "  MINOR GC  ",
     "  MAJOR GC  ",
+    "  MINOR ALLOC  ",
+    "  PROMOTED  ",
+    "  MAJOR ALLOC  "
   |];
 
   let rows =
@@ -16,6 +19,9 @@ let print = (results: list(Result.t)) => {
            pad(string_of_float(v.time)),
            pad(string_of_int(v.minorCollections)),
            pad(string_of_int(v.majorCollections)),
+           pad(string_of_int(v.minorWords)),
+           pad(string_of_int(v.promotedWords)),
+           pad(string_of_int(v.majorWords)),
          |]
        )
     |> Array.of_list;
