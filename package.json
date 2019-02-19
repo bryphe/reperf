@@ -1,6 +1,6 @@
 {
   "name": "reperf",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Native performance tools",
   "license": "MIT",
   "esy": {
