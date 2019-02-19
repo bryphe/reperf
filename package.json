@@ -4,20 +4,26 @@
   "description": "Native performance tools",
   "license": "MIT",
   "esy": {
-    "build": "refmterr dune build -p #{self.name}"
+    "buildsInSource": "_build",
+    "build": "refmterr dune build --root . -j4",
+    "install": [
+        "esy-installer reperf.install",
+        "esy-installer reperf-sample-tests.install"
+    ]
   },
   "dependencies": {
     "@opam/dune": "*",
-    "@esy-ocaml/reason": "*",
+    "@esy-ocaml/reason": "^3.4.0",
     "refmterr": "*",
-    "ocaml": "~4.6.0"
+    "ocaml": ">=4.4.0",
+    "@reason-native/pastel": "^0.1.0",
+    "@opam/printbox": "*"
   },
   "resolutions": {
-    "@opam/menhir": "20171013",
-    "@esy-ocaml/reason": "facebook/reason#ab49908"
+    "@opam/menhir": "20171013"
   },
   "devDependencies": {
-    "@esy-ocaml/merlin": "*",
-    "ocaml": "~4.6.0"
+    "@opam/merlin": "*",
+    "ocaml": ">=4.4.0"
   }
 }

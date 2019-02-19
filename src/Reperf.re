@@ -1,89 +1,73 @@
+module Config = Config;
 
-type measureFunction = unit => unit;
+module type Args = {let config: Config.t;};
 
-let _trackingEnabled = ref(false);
+module Make = (Config: Args) => {
+  open Pastel;
 
-let _getTime = () => Unix.gettimeofday();
+  module Benchmark = {
+    type benchmarkFunction = unit => Result.t;
 
-let _recordCounter = (name: string) => {
-    /* TODO */
-    ();
-}
+    type t = {
+      name: string,
+      f: benchmarkFunction,
+    };
+  };
 
-let _recordTimingMeasurement = (name: string, time: float) => {
-    /* TODO */
-    ();
-}
+  let _benchmarks: ref(list(Benchmark.t)) = ref([]);
 
-let measure = (name: string, f: measureFunction) => {
-    switch(_trackingEnabled^) {
-    | false => f()
-    | true => {
-       let startTime = _getTime(); 
-       f();
-       let endTime = _getTime();
-       _recordTimingMeasurement(name, endTime -. startTime);
-    }
-    }
-};
+  let _getTime = Unix.gettimeofday;
 
-let counter = (name: string) => {
-    switch(_trackingEnabled^) {
-    | false => ()
-    | true => _recordCounter(name);
-    }
-};
+  type testFunction = unit => unit;
 
-type benchmarkOptions = {
-    iterations: int,
-};
-
-let defaultOptions: benchmarkOptions = {
-    iterations: 1000,
-};
-
-type benchmarkIterationResult = {
-    minorWords: int,
-    promotedWords: int,
-    majorWords: int,
-    minorCollections: int,
-    majorCollections: int,
-    /* TODO: Counters */
-    /* TODO: Timings */
-};
-
-let benchmark = (~opts=defaultOptions, name: string, f: measureFunction) => {
-    
-    let iter = () => {
+  let bench =
+      (~name: string, ~f: testFunction, ~options=Config.config.options, ()) => {
+    let newCase = () => {
+      let opts = options;
+      let iter = () => {
         /* Garbage collect to clear out env */
-        Gc.full_major();   
-        let beforeStat = Gc.quick_stat();
+        Gc.full_major();
+        let beforeState = Gc.quick_stat();
 
         let startTime = _getTime();
-        f();
+        let count = ref(0);
+        while (count^ < opts.iterations) {
+          f();
+          count := count^ + 1;
+        };
         let endTime = _getTime();
 
         let afterState = Gc.quick_stat();
+        let result: Result.t = {
+          name,
+          time: endTime -. startTime,
+          minorWords: int_of_float(afterState.minor_words) - int_of_float(beforeState.minor_words),
+          promotedWords: int_of_float(afterState.promoted_words) - int_of_float(beforeState.promoted_words),
+          majorWords: int_of_float(afterState.major_words) - int_of_float(beforeState.major_words),
+          minorCollections:
+            afterState.minor_collections - beforeState.minor_collections,
+          majorCollections: afterState.major_collections - beforeState.major_collections,
+        };
 
-        ();
-        
-        /* let stats: { */
-        /*     minorWords: minor_words - previousMinorWords, */
-        /*     promotedWords: promoted_words - previousPromotedWords, */
-        /*     majorWords: major_words - previousMajorWords, */
-        /*     minorCollections: minor_collections - previousMinorCollections, */
-        /*     majorCollections: major_collections - previousMajorCollections, */
-        /* }; */
-        /* stats; */
+        result;
+      };
+
+      iter();
     };
 
-    let startTime = _getTime();
-    let count = ref(0);
-    while (count^ < opts.iterations) {
-        let _ = iter();
-        count := count^ + 1;
-    }
+    let benchmark: Benchmark.t = {name, f: newCase};
 
-    let endTime = _getTime();
-    let totalTime = endTime -. startTime;
-}
+    _benchmarks := List.append([benchmark], _benchmarks^);
+  };
+
+  let cli = () => {
+    /* print_endline (<Pastel color=Red inverse=true>{"hello"}</Pastel>); */
+    /* print_endline ("Cases: " ++ string_of_int(List.length(_benchmarks^))); */
+
+    let benchmarks = List.rev(_benchmarks^);
+    let results = List.map((t: Benchmark.t) => t.f(), benchmarks);
+
+    Reporter.print(results);
+    ();
+  };
+};

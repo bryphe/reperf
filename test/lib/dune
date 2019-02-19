@@ -1,0 +1,6 @@
+(library
+    (name ReperfSampleTests)
+    (public_name reperf-sample-tests.lib)
+    (ocamlopt_flags -linkall)
+    (libraries reperf.lib)
+)
