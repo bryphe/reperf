@@ -4,7 +4,12 @@
   "description": "Native performance tools",
   "license": "MIT",
   "esy": {
-    "build": "refmterr dune build -p #{self.name}"
+    "buildsInSource": "_build",
+    "build": "refmterr dune build --root . -j4",
+    "install": [
+        "esy-installer reperf.install",
+        "esy-installer reperf-sample-tests.install"
+    ]
   },
   "dependencies": {
     "@opam/dune": "*",
