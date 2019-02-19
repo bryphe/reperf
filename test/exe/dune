@@ -1,6 +1,6 @@
 (executable
     (name bench)
     (public_name bench)
-    (libraries reperf-sample-tests.lib)
+    (libraries printbox reperf-sample-tests.lib)
     (package reperf-sample-tests)
 )

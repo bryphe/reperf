@@ -6,7 +6,7 @@ type t = {
     iterations: int,
 };
 
-let create = (~iterations=100, ()) => {
+let create = (~iterations=1000000, ()) => {
     let ret: t = { 
         iterations: iterations,
     };

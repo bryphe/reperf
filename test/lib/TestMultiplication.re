@@ -1,11 +1,12 @@
 open TestFramework;
 
 let floatMultiply = () => {
-    let _ = 2. *. 2.;
+    /* print_endline("ab"); */
+    let _ = Array.append([|"a"|], [|"b"|]);
 };
 
 let intMultiply = () => {
-   let _ = 2 * 2;
+    let _ = List.append(["a"], ["b"]);
 };
 
 bench(

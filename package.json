@@ -16,7 +16,8 @@
     "@esy-ocaml/reason": "^3.4.0",
     "refmterr": "*",
     "ocaml": ">=4.4.0",
-    "@reason-native/pastel": "^0.1.0"
+    "@reason-native/pastel": "^0.1.0",
+    "@opam/printbox": "*"
   },
   "resolutions": {
     "@opam/menhir": "20171013"

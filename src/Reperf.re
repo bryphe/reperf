@@ -29,19 +29,24 @@ module Make = (Config: Args) => {
             let opts = options;
             let iter = () => {
                 /* Garbage collect to clear out env */
-                Gc.full_major();   
-                let beforeStat = Gc.quick_stat();
+                Gc.full_major();
+                let beforeState = Gc.quick_stat();
 
                 let startTime = _getTime();
-                f();
+                let count = ref(0);
+                while (count^ < opts.iterations) {
+                    f();
+                    count := count^ + 1;
+                }
                 let endTime = _getTime();
 
                 let afterState = Gc.quick_stat();
                 let result: Result.t = {
+                    time: endTime -. startTime,
                     minorWords: 0,
                     promotedWords: 0,
                     majorWords: 0,
-                    minorCollections: 0,
+                    minorCollections: afterState.minor_collections - beforeState.minor_collections,
                     majorCollections: 0,
                 };
 
@@ -56,20 +61,12 @@ module Make = (Config: Args) => {
             };
 
             let results: ref(list(Result.t)) = ref([]);
-            let startTime = _getTime();
-            let count = ref(0);
-            while (count^ < opts.iterations) {
-                let result = iter();
-                count := count^ + 1;
-                results := List.append([result], results^);
-            }
+            let result = iter();
+            results := List.append([result], results^);
 
             results := List.rev(results^);
 
-            let endTime = _getTime();
-            let totalTime = endTime -. startTime;
-
-            print_endline ("name: " ++ name ++ " time: " ++ string_of_float(totalTime));
+            print_endline ("name: " ++ name ++ " time: " ++ string_of_float(result.time) ++ " minor collections: " ++ string_of_int(result.minorCollections));
 
             results^;
         };
@@ -87,7 +84,8 @@ module Make = (Config: Args) => {
      print_endline (<Pastel color=Red inverse=true>{"hello"}</Pastel>);
      print_endline ("Cases: " ++ string_of_int(List.length(_benchmarks^)));
     
-     let _ = List.map((t: Benchmark.t) => t.f(), _benchmarks^);
+     let benchmarks = List.rev(_benchmarks^);
+     let _ = List.map((t: Benchmark.t) => t.f(), benchmarks);
      ();
     };
 }
