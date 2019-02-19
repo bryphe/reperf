@@ -1,4 +1,5 @@
 type t = {
+    name: string,
     time: float,
     minorWords: int,
     promotedWords: int,
@@ -10,13 +11,15 @@ type t = {
 };
 
 let create = (
-   ~time,
+    ~name,
+    ~time,
     ~minorWords,
     ~promotedWords,
     ~majorWords,
     ~minorCollections,
     ~majorCollections
 ) => {
+   name,
    time,
    minorWords,
    promotedWords,

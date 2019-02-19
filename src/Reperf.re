@@ -9,7 +9,7 @@ module Make = (Config: Args) => {
     open Pastel;
 
     module Benchmark {
-        type benchmarkFunction = unit => list(Result.t);
+        type benchmarkFunction = unit => Result.t;
 
         type t = {
             name: string,
@@ -42,6 +42,7 @@ module Make = (Config: Args) => {
 
                 let afterState = Gc.quick_stat();
                 let result: Result.t = {
+                    name,
                     time: endTime -. startTime,
                     minorWords: 0,
                     promotedWords: 0,
@@ -60,15 +61,7 @@ module Make = (Config: Args) => {
                 result;
             };
 
-            let results: ref(list(Result.t)) = ref([]);
-            let result = iter();
-            results := List.append([result], results^);
-
-            results := List.rev(results^);
-
-            print_endline ("name: " ++ name ++ " time: " ++ string_of_float(result.time) ++ " minor collections: " ++ string_of_int(result.minorCollections));
-
-            results^;
+            iter();
         };
 
         let benchmark: Benchmark.t = {
@@ -81,11 +74,13 @@ module Make = (Config: Args) => {
     
 
     let cli = () => {
-     print_endline (<Pastel color=Red inverse=true>{"hello"}</Pastel>);
-     print_endline ("Cases: " ++ string_of_int(List.length(_benchmarks^)));
+     /* print_endline (<Pastel color=Red inverse=true>{"hello"}</Pastel>); */
+     /* print_endline ("Cases: " ++ string_of_int(List.length(_benchmarks^))); */
     
      let benchmarks = List.rev(_benchmarks^);
-     let _ = List.map((t: Benchmark.t) => t.f(), benchmarks);
+     let results = List.map((t: Benchmark.t) => t.f(), benchmarks);
+
+      Reporter.print(results);
      ();
     };
 }
