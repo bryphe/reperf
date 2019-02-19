@@ -5,18 +5,11 @@
  */
 
 type t = {
-    snapshotDir: string,
-    options: Options.t,
+  snapshotDir: string,
+  options: Options.t,
 };
 
-let create = (
-    ~snapshotDir,
-    ~options=Options.create(),
-    (),
-) => {
-    let ret:t = {
-        snapshotDir,
-        options,
-    };
-    ret;
+let create = (~snapshotDir, ~options=Options.create(), ()) => {
+  let ret: t = {snapshotDir, options};
+  ret;
 };
