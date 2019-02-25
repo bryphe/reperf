@@ -19,21 +19,27 @@ module Make = (Config: Args) => {
 
   let _getTime = Unix.gettimeofday;
 
-  type testFunction = unit => unit;
+  type setupFunction('a) = unit => 'a;
+  type testFunction('a) = 'a => unit;
+
+  let defaultSetupFunction: setupFunction(unit) = () => ();
 
   let bench =
-      (~name: string, ~f: testFunction, ~options=Config.config.options, ()) => {
+      (~name: string, ~setup:setupFunction('a)=defaultSetupFunction, ~f: testFunction('a), ~options=Config.config.options, ()) => {
     let newCase = () => {
       let opts = options;
       let iter = () => {
         /* Garbage collect to clear out env */
+
+        let setupValue = setup();
+
         Gc.full_major();
         let beforeState = Gc.quick_stat();
 
         let startTime = _getTime();
         let count = ref(0);
         while (count^ < opts.iterations) {
-          f();
+          f(setupValue);
           count := count^ + 1;
         };
         let endTime = _getTime();
