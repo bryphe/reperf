@@ -3,6 +3,7 @@ let pad = s => "  " ++ s ++ "  ";
 let print = (results: list(Result.t)) => {
   let header = [|
     "  BENCHMARK  ",
+    "  ITERATIONS ",
     "  TIME  ",
     "  MINOR GC  ",
     "  MAJOR GC  ",

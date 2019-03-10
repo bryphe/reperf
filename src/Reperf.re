@@ -46,6 +46,7 @@ module Make = (Config: Args) => {
         let afterState = Gc.quick_stat();
         let result: Result.t = {
           name,
+          iterations: opts.iterations,
           time: endTime -. startTime,
           minorWords: int_of_float(afterState.minor_words) - int_of_float(beforeState.minor_words),
           promotedWords: int_of_float(afterState.promoted_words) - int_of_float(beforeState.promoted_words),
