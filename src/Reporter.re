@@ -3,6 +3,7 @@ let pad = s => "  " ++ s ++ "  ";
 let print = (results: list(Result.t)) => {
   let header = [|
     "  BENCHMARK  ",
+    "  ITERATIONS ",
     "  TIME  ",
     "  MINOR GC  ",
     "  MAJOR GC  ",
@@ -16,6 +17,7 @@ let print = (results: list(Result.t)) => {
     |> List.map((v: Result.t) =>
          [|
            pad(v.name),
+           pad(string_of_int(v.iterations)),
            pad(string_of_float(v.time)),
            pad(string_of_int(v.minorCollections)),
            pad(string_of_int(v.majorCollections)),

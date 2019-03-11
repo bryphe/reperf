@@ -1,5 +1,8 @@
 type t = {
   name: string,
+
+  /* Number of times the test was run */
+  iterations: int,
   time: float,
   minorWords: int,
   promotedWords: int,
@@ -13,6 +16,7 @@ type t = {
 let create =
     (
       ~name,
+      ~iterations,
       ~time,
       ~minorWords,
       ~promotedWords,
@@ -21,6 +25,7 @@ let create =
       ~majorCollections,
     ) => {
   name,
+  iterations,
   time,
   minorWords,
   promotedWords,
