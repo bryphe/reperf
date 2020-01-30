@@ -5,7 +5,7 @@
   "license": "MIT",
   "esy": {
     "buildsInSource": "_build",
-    "build": "refmterr dune build --root . -j4",
+    "build": "refmterr dune build -p reperf",
     "install": [
         "esy-installer reperf.install",
         "esy-installer reperf-sample-tests.install"
