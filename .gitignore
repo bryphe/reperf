@@ -66,3 +66,4 @@ typings/
 
 _esy/
 esy.lock/
+_build

@@ -5,10 +5,9 @@
   "license": "MIT",
   "esy": {
     "buildsInSource": "_build",
-    "build": "refmterr dune build --root . -j4",
+    "build": "refmterr dune build -p reperf",
     "install": [
-        "esy-installer reperf.install",
-        "esy-installer reperf-sample-tests.install"
+        "esy-installer reperf.install"
     ]
   },
   "dependencies": {
@@ -20,10 +19,10 @@
     "@opam/printbox": "*"
   },
   "resolutions": {
-    "@opam/menhir": "20171013"
+    "@esy-ocaml/reason": "facebook/reason#8f71db0"
   },
   "devDependencies": {
     "@opam/merlin": "*",
-    "ocaml": ">=4.4.0"
+    "ocaml": "~4.9"
   }
 }
