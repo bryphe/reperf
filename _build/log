@@ -1,0 +1,306 @@
+# dune build --root . -j4
+# OCAMLPARAM: unset
+# Workspace root: /home/glennsl/dev/remote/glennsl/reperf
+# disable binary cache
+$ /home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocamlfind-opam__c__1.8.1-196676a2/bin/ocamlfind printconf path > /tmp/dunec0da04.output
+$ /home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlc.opt -config > /tmp/dune1f62ac.output
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dyn
+#  ; merlin = true
+#  ; for_host = None
+#  ; fdo_target_exe = None
+#  ; build_dir = "default"
+#  ;
+#  toplevel_path =
+#    Some
+#      External
+#        "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/lib/ocaml"
+#  ;
+#  ocaml_bin =
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin"
+#  ;
+#  ocaml =
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocaml"
+#  ;
+#  ocamlc =
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlc.opt"
+#  ;
+#  ocamlopt =
+#    Some
+#      External
+#        "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlopt.opt"
+#  ;
+#  ocamldep =
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamldep.opt"
+#  ;
+#  ocamlmklib =
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlmklib.opt"
+#  ;
+#  env =
+#    map
+#      {
+#      "DUNE_CONFIGURATOR" :
+#        "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlc.opt"
+#      ; "INSIDE_DUNE" : "1"
+#      ;
+#      "MANPATH" :
+#        "/home/glennsl/dev/remote/glennsl/reperf/_build/install/default/bin"
+#      ;
+#      "OCAMLFIND_IGNORE_DUPS_IN" :
+#        "/home/glennsl/dev/remote/glennsl/reperf/_build/install/default/lib"
+#      }
+#  ;
+#  findlib_path =
+#    [
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/esy_ocaml__s__reason-dc2dacce/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__dune-opam__c__2.1.3-85200576/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__merlin-opam__c__3.3.3-4c9e04c9/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__printbox-opam__c__0.4-d70e2d53/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/reason_native__s__pastel-0.1.0-ea8ffc04/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/refmterr-3.3.0-5f7616a5/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__fix-opam__c__20181206-5c3f9e30/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__menhir-opam__c__20200123-21bed0e4/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__merlin_extend-opam__c__0.5-f8625121/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocaml_migrate_parsetree-opam__c__1.5.0-9dba0fd4/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocamlfind-opam__c__1.8.1-196676a2/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__result-opam__c__1.4-e2949187/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__utop-opam__c__2.4.3-16979af6/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/esy_ocaml__s__substs-0.0.1-ed6217b4/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__base_threads-opam__c__base-f93e1d7d/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__base_unix-opam__c__base-dc4b97fb/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__yojson-opam__c__1.7.0-86e9c307/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__base_bytes-opam__c__base-c189bb80/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__atdgen-opam__c__2.0.0-4b321f14/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__re-opam__c__1.9.0-4da55732/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/reason_native__s__console-0.1.0-f9028880/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__menhirlib-opam__c__20200123-1ed03dc2/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__menhirsdk-opam__c__20200123-8122e14e/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__cppo-opam__c__1.6.6-9b937b62/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ppx__derivers-opam__c__1.2.1-e10c84e1/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__conf_m4-opam__c__1-75f0454e/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__camomile-opam__c__1.0.2-8aa82282/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__lambda_term-opam__c__2.0.3-484ffc17/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__lwt-opam__c__5.1.1-7f651907/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__lwt__react-opam__c__1.1.3-e2fb9410/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__react-opam__c__1.2.1-a381ebf6/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__biniou-opam__c__1.2.1-3cd62905/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__easy_format-opam__c__1.3.2-81855bbd/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__atd-opam__c__2.0.0-73b62505/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__atdgen_runtime-opam__c__2.0.0-d433748d/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__jbuilder-opam__c__1.0+beta20.2-e62ecd48/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__seq-opam__c__base-e6ed2c0f/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__lwt__log-opam__c__1.1.1-4c9d0ecf/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__zed-opam__c__2.0.5-7fb02e7e/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__dune_configurator-opam__c__2.1.3-70a54951/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__mmap-opam__c__1.1.0-c14632aa/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocplib_endian-opam__c__1.0-6d570701/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocamlbuild-opam__c__0.14.0-f56b0baf/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__topkg-opam__c__1.0.1-485127b8/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__charinfo__width-opam__c__1.1.0-6d0089e5/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__dune_private_libs-opam__c__2.1.3-6f03d9ce/lib"
+#    ;
+#    External
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocamlfind-opam__c__1.8.1-196676a2/lib"
+#    ]
+#  ; arch_sixtyfour = true
+#  ; natdynlink_supported = true
+#  ; supports_shared_libraries = true
+#  ; opam_vars = map {}
+#  ;
+#  ocaml_config =
+#    { version = "4.09.0"
+#    ;
+#    standard_library_default =
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/lib/ocaml"
+#    ;
+#    standard_library =
+#      "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/lib/ocaml"
+#    ; standard_runtime = "the_standard_runtime_variable_was_deleted"
+#    ; ccomp_type = "cc"
+#    ; c_compiler = "gcc"
+#    ; ocamlc_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv"; "-fPIC" ]
+#    ; ocamlopt_cflags = [ "-O2"; "-fno-strict-aliasing"; "-fwrapv" ]
+#    ;
+#    bytecomp_c_compiler =
+#      [ "gcc"
+#      ; "-O2"
+#      ; "-fno-strict-aliasing"
+#      ; "-fwrapv"
+#      ; "-fPIC"
+#      ; "-D_FILE_OFFSET_BITS=64"
+#      ; "-D_REENTRANT"
+#      ]
+#    ; bytecomp_c_libraries = [ "-lm"; "-ldl"; "-lpthread" ]
+#    ;
+#    native_c_compiler =
+#      [ "gcc"
+#      ; "-O2"
+#      ; "-fno-strict-aliasing"
+#      ; "-fwrapv"
+#      ; "-D_FILE_OFFSET_BITS=64"
+#      ; "-D_REENTRANT"
+#      ]
+#    ; native_c_libraries = [ "-lm"; "-ldl" ]
+#    ; cc_profile = []
+#    ; architecture = "amd64"
+#    ; model = "default"
+#    ; int_size = 63
+#    ; word_size = 64
+#    ; system = "linux"
+#    ; asm = [ "as" ]
+#    ; asm_cfi_supported = false
+#    ; with_frame_pointers = false
+#    ; ext_exe = ""
+#    ; ext_obj = ".o"
+#    ; ext_asm = ".s"
+#    ; ext_lib = ".a"
+#    ; ext_dll = ".so"
+#    ; os_type = "Unix"
+#    ; default_executable_name = "a.out"
+#    ; systhread_supported = true
+#    ; host = "x86_64-pc-linux-gnu"
+#    ; target = "x86_64-pc-linux-gnu"
+#    ; profiling = false
+#    ; flambda = false
+#    ; spacetime = false
+#    ; safe_string = false
+#    ; exec_magic_number = "Caml1999X026"
+#    ; cmi_magic_number = "Caml1999I026"
+#    ; cmo_magic_number = "Caml1999O026"
+#    ; cma_magic_number = "Caml1999A026"
+#    ; cmx_magic_number = "Caml1999Y026"
+#    ; cmxa_magic_number = "Caml1999Z026"
+#    ; ast_impl_magic_number = "Caml1999M026"
+#    ; ast_intf_magic_number = "Caml1999N026"
+#    ; cmxs_magic_number = "Caml1999D026"
+#    ; cmt_magic_number = "Caml1999T026"
+#    ; natdynlink_supported = true
+#    ; supports_shared_libraries = true
+#    ; windows_unicode = false
+#    }
+#  ;
+#  which =
+#    map
+#      {
+#      "ocaml" :
+#        Some
+#          External
+#            "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocaml"
+#      ;
+#      "ocamlc" :
+#        Some
+#          External
+#            "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlc.opt"
+#      ;
+#      "ocamlfind" :
+#        Some
+#          External
+#            "/home/glennsl/.esy/3__________________________________________________________________/i/opam__s__ocamlfind-opam__c__1.8.1-196676a2/bin/ocamlfind"
+#      ;
+#      "ocamlobjinfo" :
+#        Some
+#          External
+#            "/home/glennsl/.esy/3__________________________________________________________________/i/ocaml-4.9.0-031bf83c/bin/ocamlobjinfo.opt"
+#      }
+#  }

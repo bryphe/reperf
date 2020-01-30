@@ -1,0 +1,34 @@
+(lang dune 2.1)
+(name reperf-sample-tests)
+(library
+ (name reperf-sample-tests.lib)
+ (kind normal)
+ (archives
+  (byte lib/ReperfSampleTests.cma)
+  (native lib/ReperfSampleTests.cmxa))
+ (plugins
+  (byte lib/ReperfSampleTests.cma)
+  (native lib/ReperfSampleTests.cmxs))
+ (native_archives lib/ReperfSampleTests.a)
+ (requires reperf.lib)
+ (main_module_name ReperfSampleTests)
+ (modes byte native)
+ (modules
+  (wrapped
+   (main_module_name ReperfSampleTests)
+   (modules
+    ((name TestAppend)
+     (obj_name reperfSampleTests__TestAppend)
+     (visibility public)
+     (impl))
+    ((name TestFramework)
+     (obj_name reperfSampleTests__TestFramework)
+     (visibility public)
+     (impl)))
+   (alias_module
+    (name ReperfSampleTests)
+    (obj_name reperfSampleTests)
+    (visibility public)
+    (kind alias)
+    (impl))
+   (wrapped true))))

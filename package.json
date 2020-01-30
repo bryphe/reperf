@@ -20,10 +20,10 @@
     "@opam/printbox": "*"
   },
   "resolutions": {
-    "@opam/menhir": "20171013"
+    "@esy-ocaml/reason": "facebook/reason#8f71db0"
   },
   "devDependencies": {
     "@opam/merlin": "*",
-    "ocaml": ">=4.4.0"
+    "ocaml": "~4.9"
   }
 }
