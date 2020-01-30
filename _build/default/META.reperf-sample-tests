@@ -1,9 +1,0 @@
-package "lib" (
-  directory = "lib"
-  description = ""
-  requires = "reperf.lib"
-  archive(byte) = "ReperfSampleTests.cma"
-  archive(native) = "ReperfSampleTests.cmxa"
-  plugin(byte) = "ReperfSampleTests.cma"
-  plugin(native) = "ReperfSampleTests.cmxs"
-)

@@ -1,9 +1,0 @@
-package "lib" (
-  directory = "lib"
-  description = ""
-  requires = "pastel.lib printbox unix"
-  archive(byte) = "reperf.cma"
-  archive(native) = "reperf.cmxa"
-  plugin(byte) = "reperf.cma"
-  plugin(native) = "reperf.cmxs"
-)

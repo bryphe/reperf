@@ -1,5 +1,0 @@
-(** @canonical ReperfSampleTests.TestAppend *)
-module TestAppend = ReperfSampleTests__TestAppend
-
-(** @canonical ReperfSampleTests.TestFramework *)
-module TestFramework = ReperfSampleTests__TestFramework
