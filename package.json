@@ -7,8 +7,7 @@
     "buildsInSource": "_build",
     "build": "refmterr dune build -p reperf",
     "install": [
-        "esy-installer reperf.install",
-        "esy-installer reperf-sample-tests.install"
+        "esy-installer reperf.install"
     ]
   },
   "dependencies": {
