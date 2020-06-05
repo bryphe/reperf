@@ -12,14 +12,11 @@
   },
   "dependencies": {
     "@opam/dune": "*",
-    "@esy-ocaml/reason": "^3.4.0",
+    "@esy-ocaml/reason": "^3.6.0",
     "refmterr": "*",
     "ocaml": ">=4.4.0",
     "@reason-native/pastel": "^0.1.0",
     "@opam/printbox": "*"
-  },
-  "resolutions": {
-    "@esy-ocaml/reason": "facebook/reason#8f71db0"
   },
   "devDependencies": {
     "@opam/merlin": "*",
