@@ -5,20 +5,18 @@
   "license": "MIT",
   "esy": {
     "buildsInSource": "_build",
-    "build": "refmterr dune build -p reperf",
-    "install": [
-        "esy-installer reperf.install"
-    ]
+    "build": "dune build -p #{self.name}",
+    "buildDev": "refmterr dune build --promote-install-files --root . --only-package #{self.name}"
   },
   "dependencies": {
     "@opam/dune": "*",
     "@esy-ocaml/reason": "^3.6.0",
-    "refmterr": "*",
     "ocaml": ">=4.4.0",
     "@reason-native/pastel": "^0.1.0",
     "@opam/printbox": "*"
   },
   "devDependencies": {
+    "refmterr": "*",
     "@opam/merlin": "*",
     "ocaml": "~4.9"
   }
