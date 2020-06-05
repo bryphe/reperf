@@ -15,6 +15,9 @@
     "@reason-native/pastel": "^0.1.0",
     "@opam/printbox": "*"
   },
+  "resolutions": {
+      "@opam/dune": "2.5.0"
+  },
   "devDependencies": {
     "refmterr": "*",
     "@opam/merlin": "*",
