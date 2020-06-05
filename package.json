@@ -21,6 +21,6 @@
   "devDependencies": {
     "refmterr": "*",
     "@opam/merlin": "*",
-    "ocaml": "~4.9"
+    "ocaml": "~4.10"
   }
 }
