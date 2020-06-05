@@ -65,5 +65,4 @@ typings/
 *.install
 
 _esy/
-esy.lock/
 _build
