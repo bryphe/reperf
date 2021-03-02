@@ -5,24 +5,19 @@
   "license": "MIT",
   "esy": {
     "buildsInSource": "_build",
-    "build": "refmterr dune build -p reperf",
+    "build": "dune build -p reperf",
     "install": [
         "esy-installer reperf.install"
     ]
   },
   "dependencies": {
     "@opam/dune": "*",
-    "@esy-ocaml/reason": "^3.4.0",
-    "refmterr": "*",
-    "ocaml": ">=4.4.0",
-    "@reason-native/pastel": "^0.1.0",
-    "@opam/printbox": "*"
-  },
-  "resolutions": {
-    "@esy-ocaml/reason": "facebook/reason#8f71db0"
+    "@opam/printbox": "*",
+    "@opam/reason": "^3.4.0",
+    "ocaml": ">=4.4.0"
   },
   "devDependencies": {
     "@opam/merlin": "*",
-    "ocaml": "~4.9"
+    "ocaml": "~4.11"
   }
 }
