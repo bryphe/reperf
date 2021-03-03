@@ -4,7 +4,7 @@ module Options = Options;
 module type Args = {let config: Config.t;};
 
 module Make = (Config: Args) => {
-  open Pastel;
+  // open Pastel;
 
   module Benchmark = {
     type benchmarkFunction = unit => Result.t;
