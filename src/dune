@@ -1,5 +1,5 @@
 (library
   (name reperf)
   (flags (-w -40 -w +26))
-  (libraries unix printbox)
+  (libraries unix printbox-text)
   (public_name reperf.lib))
